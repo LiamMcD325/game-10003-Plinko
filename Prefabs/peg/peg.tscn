@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbyet7xxxriks"]
+
+[ext_resource type="Script" uid="uid://bqytdn1awffmh" path="res://addons/2d_shapes/shapes/Ellipse.gd" id="1_4yy11"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_epwbd"]
+radius = 5.0
+
+[node name="Peg" type="StaticBody2D"]
+
+[node name="Ellipse" type="Node2D" parent="."]
+script = ExtResource("1_4yy11")
+size = Vector2(10, 10)
+metadata/_custom_type_script = "uid://bqytdn1awffmh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_epwbd")

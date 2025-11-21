@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://l80785pd73uk"]
+
+[ext_resource type="PackedScene" uid="uid://tcyu53gy0oix" path="res://Prefabs/row/row.tscn" id="1_633vk"]
+[ext_resource type="Script" uid="uid://bqytdn1awffmh" path="res://addons/2d_shapes/shapes/Ellipse.gd" id="1_lpj2a"]
+[ext_resource type="Script" uid="uid://dd4hjk3a6i4au" path="res://addons/2d_shapes/shapes/Rectangle.gd" id="2_0sc2l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4xnwa"]
+
+[node name="Plinko Level" type="Node2D"]
+
+[node name="Pegs" type="Node2D" parent="."]
+
+[node name="Row1" parent="Pegs" instance=ExtResource("1_633vk")]
+position = Vector2(224, 192)
+
+[node name="Row2" parent="Pegs" instance=ExtResource("1_633vk")]
+position = Vector2(192, 256)
+
+[node name="Row3" parent="Pegs" instance=ExtResource("1_633vk")]
+position = Vector2(224, 320)
+
+[node name="Row4" parent="Pegs" instance=ExtResource("1_633vk")]
+position = Vector2(192, 384)
+
+[node name="Row5" parent="Pegs" instance=ExtResource("1_633vk")]
+position = Vector2(224, 448)
+
+[node name="Row6" parent="Pegs" instance=ExtResource("1_633vk")]
+visible = false
+position = Vector2(192, 512)
+
+[node name="Row7" parent="Pegs" instance=ExtResource("1_633vk")]
+position = Vector2(192, 512)
+
+[node name="WallPiece" type="Node2D" parent="."]
+
+[node name="CollisionShape2D" type="StaticBody2D" parent="WallPiece"]
+rotation = 0.7853982
+
+[node name="Rectangle" type="Node2D" parent="WallPiece"]
+position = Vector2(39.999985, 144.00002)
+rotation = 0.7853982
+script = ExtResource("2_0sc2l")
+size = Vector2(90, 90)
+corner_radius = 0.0
+metadata/_custom_type_script = "uid://dd4hjk3a6i4au"
+
+[node name="BottomRegion" type="Node2D" parent="."]
+position = Vector2(312, 384)
+
+[node name="Floor" type="StaticBody2D" parent="BottomRegion"]
+position = Vector2(-240, -24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomRegion/Floor"]
+
+[node name="Rectangle" type="Node2D" parent="BottomRegion/Floor"]
+script = ExtResource("2_0sc2l")
+metadata/_custom_type_script = "uid://dd4hjk3a6i4au"
+
+[node name="Wall1" type="StaticBody2D" parent="BottomRegion"]
+
+[node name="Player" type="RigidBody2D" parent="."]
+
+[node name="Ellipse" type="Node2D" parent="Player"]
+script = ExtResource("1_lpj2a")
+size = Vector2(15, 15)
+metadata/_custom_type_script = "uid://bqytdn1awffmh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_4xnwa")
